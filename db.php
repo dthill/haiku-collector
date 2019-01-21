@@ -100,5 +100,5 @@ function displayDeleted(){
 //createHaiku("Hello5");
 //deleteHaiku("Hello1");
 //restoreHaiku("Hello4",1);
-var_dump(displayHaikus);
+//var_dump(displayHaikus);
 
