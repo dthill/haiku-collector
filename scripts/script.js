@@ -49,7 +49,7 @@ function toTemplate(htmlTemplate, dataObject){
 }
 
 function getHaikus(){
-	getAjax("get.php/?haikus=all", function(response){
+	getAjax("api/get.php/?haikus=all", function(response){
 		response = JSON.parse(response);
 		let result = "";
 		let row = "";
@@ -77,7 +77,7 @@ function getHaikus(){
 }
 
 function getDeleted(){
-	getAjax("get.php/?haikus=deleted", function(response){
+	getAjax("api/get.php/?haikus=deleted", function(response){
 		response = JSON.parse(response);
 		let result = "";
 		let row = "";
@@ -145,8 +145,7 @@ window.addEventListener("load", function(){
 editorForm.addEventListener("submit", function(event){
 	event.preventDefault();
 	let poemText = "poem=" + encodeURIComponent(poemTextarea.value);
-	postAjax("post.php", poemText , function(response){
-		console.log(response);
+	postAjax("api/post.php", poemText , function(response){
 		if(response === "success"){
 			location.href = "index.php";
 		} else {
@@ -161,7 +160,7 @@ haikusContent.addEventListener("click", function(event){
 		if(confirm("Are you sure you want to report this Haiku? It will be deleted if other users also report it.")){
 			let poem = "poem=";
 			poem += encodeURIComponent(event.target.parentElement.previousElementSibling.innerHTML);
-			postAjax("delete.php", poem, function(response){
+			postAjax("api/delete.php", poem, function(response){
 				if(response === "true"){
 					getHaikus();
 				} else {
@@ -178,7 +177,7 @@ deletedContent.addEventListener("click", function(event){
 		let poem = "poem=";
 		poem += encodeURIComponent(event.target.parentElement.previousElementSibling.innerHTML);
 		poem += "&value=" + event.target.dataset.value;
-		postAjax("put.php", poem, function(response){
+		postAjax("api/put.php", poem, function(response){
 			if(response === "true"){
 					getDeleted();
 					alert("Your vote has been counted.");
