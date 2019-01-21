@@ -17,8 +17,6 @@ $pdo = new PDO("pgsql:" . sprintf(
 ));
 
 $pdo->exec("
-	CREATE DATABASE IF NOT EXISTS haiku;
-	USE haiku;
 	CREATE TABLE IF NOT EXISTS haikus (
 		id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 		poem VARCHAR(150) NOT NULL,
@@ -95,10 +93,3 @@ function displayDeleted(){
 	$stmt2->execute();
 	return json_encode($stmt2->fetchAll(PDO::FETCH_NUM));
 }
-
-//var_dump(displayDeleted());
-//createHaiku("Hello5");
-//deleteHaiku("Hello1");
-//restoreHaiku("Hello4",1);
-//var_dump(displayHaikus);
-
