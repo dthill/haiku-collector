@@ -1,20 +1,15 @@
 <?php
 
-session_start();
-
+$server = getenv("DB_URI");
+$port = getenv("DB_PORT");
+$dbName = getenv("DB_NAME");
+$username = getenv("DB_USER_NAME");
+$password = getenv("DB_PASSWORD");
 $deleteCount = 5;
 
+session_start();
 
-$db = parse_url(getenv("DATABASE_URL"));
-
-$pdo = new PDO("pgsql:" . sprintf(
-    "host=%s;port=%s;user=%s;password=%s;dbname=%s",
-    $db["host"],
-    $db["port"],
-    $db["user"],
-    $db["pass"],
-    ltrim($db["path"], "/")
-));
+$pdo = new PDO("mysql:host=$server;port=$port;dbname=$dbName", $username, $password);
 
 $pdo->exec("
 	CREATE TABLE IF NOT EXISTS haikus (
@@ -93,3 +88,9 @@ function displayDeleted(){
 	$stmt2->execute();
 	return json_encode($stmt2->fetchAll(PDO::FETCH_NUM));
 }
+
+//var_dump(displayDeleted());
+//createHaiku("Hello5");
+//deleteHaiku("Hello1");
+//restoreHaiku("Hello4",1);
+
