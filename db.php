@@ -1,21 +1,20 @@
 <?php
 
-if(getenv("DB_URI") === false){
-	$server = "localhost";
-	$username = "root";
-	$password = "";
-} else {
-	$server = getenv("DB_URI");
-	$username = getenv("DB_USER_NAME");
-	$password = getenv("DB_PASSWORD");
-}
+session_start();
+
 $deleteCount = 5;
 
 
+$db = parse_url(getenv("DATABASE_URL"));
 
-session_start();
-
-$pdo = new PDO("mysql:host=$server", $username, $password);
+$pdo = new PDO("pgsql:" . sprintf(
+    "host=%s;port=%s;user=%s;password=%s;dbname=%s",
+    $db["host"],
+    $db["port"],
+    $db["user"],
+    $db["pass"],
+    ltrim($db["path"], "/")
+));
 
 $pdo->exec("
 	CREATE DATABASE IF NOT EXISTS haiku;
