@@ -1,5 +1,5 @@
 <?php 
-include "db.php";
+include "../db.php";
 
 if(isset($_POST["poem"]) && isset($_POST["value"])){
 	if(isset($_SESSION["update"][$_POST["poem"]])){
