@@ -1,0 +1,40 @@
+nav {
+	position: sticky;
+	top: 0;
+}
+
+p {
+	margin: 0;
+}
+
+.row {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+
+.cols {
+	flex-basis: 25%;
+	padding: 1rem;
+	margin: 1rem;
+}
+
+.poem-text{
+	white-space: pre-wrap;
+}
+
+textarea {
+	display: block;
+	margin: 16px auto;
+	width : 95%;
+	outline: none;
+	resize: none;
+	overflow: hidden;
+}
+
+@media all and (max-width: 700px) {
+  .row {
+    /* On small screens, we are no longer using row direction but column */
+    flex-direction: column;
+  }
+}
