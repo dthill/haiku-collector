@@ -6,23 +6,21 @@ session_start();
 ////////////////////
 
 
-//only used for lacl dev
-
+//only used for local dev
+/*
 $server = "localhost";
 $port = 3306;
 $dbName = "haiku";
 $username = "root";
 $password = "";
+*/
 
-
-
-/*
+//used for online server dev
 $server = getenv("DB_URI");
 $port = getenv("DB_PORT");
 $dbName = getenv("DB_NAME");
 $username = getenv("DB_USER_NAME");
 $password = getenv("DB_PASSWORD");
-*/
 
 /////////
 //Class//
