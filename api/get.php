@@ -1,10 +1,11 @@
 <?php 
 include "../db.php";
 
+//display all haikus or all deleted haikus
 if(isset($_GET["haikus"])){
 	if($_GET["haikus"] === "all"){
-		echo displayHaikus();
+		echo $db->displayHaikus();
 	} elseif($_GET["haikus"] === "deleted"){
-		echo displayDeleted();
+		echo $db->displayDeleted();
 	}
 }
