@@ -16,6 +16,7 @@ $password = "";
 */
 
 //used for online server dev
+
 $server = getenv("DB_URI");
 $port = getenv("DB_PORT");
 $dbName = getenv("DB_NAME");
@@ -118,4 +119,3 @@ class HaikuCollection {
 }
 //creat db object used by the api php files
 $db = new HaikuCollection($server, $port, $dbName, $username, $password);
-
