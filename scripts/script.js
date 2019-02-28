@@ -54,8 +54,6 @@ function postAjax(url, data, callback) {
 	xhr.onreadystatechange = function() {
 		if (xhr.readyState > 3 && xhr.status == 200){ 
 			callback(xhr.response); 
-		} else if (){
-			
 		}
 	};
 	xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');

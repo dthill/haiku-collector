@@ -33,6 +33,7 @@ class HaikuCollection {
 		$this->deleteCount = 5;
 		//mySql connection
 		$this->pdo = new PDO("mysql:host=$server;port=$port;dbname=$dbName", $username, $password);
+		$this->pdo->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING );
 		//create table haikus
 		$this->pdo->exec("
 			CREATE TABLE IF NOT EXISTS haikus (
